@@ -1,0 +1,5 @@
+                        {% if number_of_comments == 1 %}
+                            ({{ number_of_comments }} Rating)
+                        {% else %}
+                            ({{ number_of_comments }} Ratings)
+                        {% endif %}

@@ -1,0 +1,79 @@
+{
+  "todo": [
+    {
+      "assignedTo": {
+        "name": "gustx"
+      },
+      "creation_time": "2024-07-17T23:24:15.623Z",
+      "id": "3",
+      "references": [],
+      "title": "[] cart"
+    },
+    {
+      "assignedTo": {
+        "name": "gustx"
+      },
+      "creation_time": "2024-07-18T14:45:47.590Z",
+      "id": "8",
+      "references": [],
+      "title": "products"
+    },
+    {
+      "assignedTo": {
+        "name": "gustx"
+      },
+      "creation_time": "2024-07-18T00:27:13.677Z",
+      "id": "4",
+      "references": [],
+      "title": "user profile"
+    },
+    {
+      "assignedTo": {
+        "name": "gustx"
+      },
+      "creation_time": "2024-07-18T00:27:51.813Z",
+      "id": "5",
+      "references": [],
+      "title": "app.py"
+    }
+  ],
+  "in-progress": [
+    {
+      "assignedTo": {
+        "name": "gustx"
+      },
+      "creation_time": "2024-07-17T23:13:22.795Z",
+      "description": {
+        "content": "[ ]\tt\n",
+        "mime": "text/markdown"
+      },
+      "details": {
+        "content": "[] make the div for the ",
+        "mime": "text/markdown"
+      },
+      "id": "1",
+      "references": [],
+      "title": "authentication"
+    },
+    {
+      "assignedTo": {
+        "name": "gustx"
+      },
+      "creation_time": "2024-07-18T00:28:13.840Z",
+      "id": "6",
+      "references": [],
+      "title": "models"
+    },
+    {
+      "assignedTo": {
+        "name": "gustx"
+      },
+      "creation_time": "2024-07-18T00:29:09.268Z",
+      "id": "7",
+      "references": [],
+      "title": "pages"
+    }
+  ],
+  "testing": [],
+  "done": []
+}

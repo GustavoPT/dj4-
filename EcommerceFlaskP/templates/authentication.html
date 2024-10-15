@@ -1,0 +1,54 @@
+{% extends 'layout.html'%}
+
+{% block invidualheader %}
+<style>
+    /* Simple styling to hide/show forms */
+    .form-container {
+        display: none;
+    }
+
+    .form-container.active {
+        display: block;
+    }
+</style>
+{% endblock %}
+{% block body %}
+
+   <div>
+    <button id="show-login">Login</button>
+    <button id="show-register">Register</button>
+</div>
+
+<div id="login-form" class="form-container  {% if action == 'login' %}active{% endif %}">
+    <h1>Login</h1>
+    
+    <form method="post" action="{{ url_for('login') }}">
+        {{ login_form.hidden_tag() }}
+        <div>
+            {{ login_form.email.label }} {{ login_form.email(id="register-email") }}
+        </div>
+        <div>
+            {{ login_form.password.label }} {{ login_form.password(id="register-password") }}
+        </div>
+        <button type="submit" name="login">Login</button>
+    </form>
+    </div>
+    <div id="register-form" class="form-container {% if action == 'register' %}active{% endif %}">
+        <h1>Register</h1>
+        <form method="post" action="{{ url_for('register') }}">
+            {{ registration_form.hidden_tag() }}
+            
+            <div>
+                {{ registration_form.email.label }} {{ registration_form.email(id="register-email") }}
+            </div>
+            <div>
+                {{ registration_form.password.label }} {{ registration_form.password(id="register-password") }}
+            </div>
+            <button type="submit" name="register">Register</button>
+        </form>
+    </div>
+
+  <script src="/static/js/authentication.js"></script> 
+
+
+{% endblock %}

@@ -1,0 +1,54 @@
+                   
+                   
+                   				{% if comments and comments|length > 0 %}
+                {{ pagination.info }}
+                {{ pagination.links }}
+				{% endif %}
+                <section>
+                    {% if comments and comments|length > 0 %}
+                        {% for comment in comments %}
+                            <section>
+                                {{ comment.createdDate }}
+                                {%  if comment.anonymous %}
+                                    <i><b><u>{{ comment.user }}</u></b></i>
+                                {% else %}
+                                    <b><u>{{ comment.user }}</u></b>
+                                {% endif %}
+                                <x-star-rating value="{{ comment.rating }}" number="5" id="rated" disabled="true"></x-star-rating>
+                            </section>
+                            <section class="actualComment">
+                            <a>{{ comment.comments }}</a>
+                            </section>
+                        {% endfor %}
+                    {% else %}
+                    <p>&nbsp No comments yet.</p>
+                    {% endif %}
+                </section>
+                    <section>
+                        <h3>Add Comment</h3>
+                        <form action="{{ url_for('add_comment_to_product', user_id=current_user.id, product_id=product.id) }}" method="post">
+                            <input type="hidden" id="ratingValue" name="ratingValue" value=""/>
+                            <textarea rows="6" cols="60" maxlength="500" name="comment" placeholder="Enter your comment here..." value=""></textarea>
+                            <br>
+                            <input type="checkbox" name="anonymous" id="anonymous" />
+                            <label for="chk">Submit as an anonymous user?</label>
+                            <br>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </section>
+
+                                {% if current_user.id and not has_ordered %}
+            Want to leave a comment and rating? You must first order the product.
+            {% endif %}
+
+            			<article class="commentSection">
+                <section>
+                    <h3 >Comments</h3>
+                </section>
+
+            </article>
+
+
+              # if not any(c in specialCharacters for c in password):
+            #     flash('Password must have atleast one special character','error')
+            #     return redirect(url_for('register'))

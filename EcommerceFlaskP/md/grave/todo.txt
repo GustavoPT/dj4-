@@ -1,0 +1,28 @@
+c:\Users\gustx\vcpkg
+bootstrap-vcpkg.bat
+
+flask
+flask db init 
+
+flask db init       # Initialize the migrations directory
+flask db migrate -m "init migration"  # Create a new migration
+flask db upgrade    # Apply the migration
+flask db history 
+flask db downgrade base 
+
+
+
+
+set VCPKG_ROOT="C:\vcpkg"
+set PATH=%VCPKG_ROOT%;%PATH%
+vcpkg integrate install 
+cd /d E:\devE\cpp\of\r1
+vcpkg install raylib:x64-windows
+test 
+    []login , []registration ,[] products ,[] cart , 
+    [] 
+    rename to movies 
+
+    - movies
+    nlp for comments 
+    pagination 

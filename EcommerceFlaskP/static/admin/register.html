@@ -1,0 +1,29 @@
+{% extends 'layout.html'%}
+
+{% block body %}
+<form action="/register" method="POST">
+    <h1>REGISTER </h1>  
+    {{ form.csrf_token }}
+    <br>
+    Name 
+    <br>
+    {{form.username(class="form form-control")}}
+    <br>
+    Email 
+    <br>
+    {{form.email(class="form form-control")}}
+    <br>
+    Password
+    <br>
+    {{form.password(class="form form-control")}}
+    <br>
+    Confirm 
+    <br>
+    {{form.confirm(value="Confirm",class="form form-control")}}
+    <br>
+    <br>
+    {{form.submit(class="btn btn-outline-info")}}
+    <br>
+    <br>
+</form>
+{% endblock %}

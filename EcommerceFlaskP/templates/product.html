@@ -1,0 +1,135 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+<div class="container">
+	<div class = "row">
+		<div class="col-sm-4">
+			<div class="card">
+				<h4 class="card-title text-center">{{product.title}}</h4>
+				<h5 class="card-subtitle mb-1 text-center"><a href="{{ url_for('author_page') }}">{{product.authorName}}</a></h5>
+				<h6 class="card-subtitle mb-1 text-muted text-center">{{ product.genre }}</h6>
+				<div class="text-center">
+					<img id="myImg" class="img-thumbnail" src ="{{ product.image_path }}" alt="Product Image" style="width:100%;max-width:300px">
+					<!-- The Modal -->
+					<div id="myModal" class="modal">
+
+						<!-- The Close Button -->
+						<span class="close">&times;</span>
+
+						<!-- Modal Content (The Image) -->
+						<img class="modal-content" id="img01">
+
+						<!-- Modal Caption (Image Text) -->
+						<div id="caption"></div>
+					</div>
+				</div>
+				<section class='rating-widget'>
+                    <div style="text-align: center;">
+                        <x-star-rating value="{{ average_rating }}" number="5" id="rated" disabled="true"></x-star-rating>
+                    </div>
+
+					<ul class="list-group list-group-flush">
+						<li class="list-group-item text-center">${{ product.price }}</li>
+					</ul>
+					<div class="card-body">
+						<a href="{{ url_for('add_to_cart', user_id=current_user.id, product_id=product.id) }}" class="btn btn-primary">Add to Cart</a>
+						<a href="{{ url_for('save_for_later',product_id=product.id) }}" class="btn btn-secondary">Save for later</a>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6 align-self-center">
+			<div class="row">
+				<p class="card-text">{{ product.description }}</p>
+			</div>
+			
+			<div class="row">
+				<p>About The Author</p>
+				<p>{{author.AuthorBio}}</p>
+			</div>
+
+			<div class="row">
+				<p> Publisher : {{ product.publisher }}</p>
+			</div>
+
+
+
+
+            rate now 
+            <div class="row">
+ 
+                <div class="col text-center">
+            
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                </div>
+            </div>
+            
+
+			<style>
+                .commentSection {
+                    margin-bottom: 25px;
+                }
+                .commentSection nav {
+                    background: white !important;
+                    margin-top: 10px;
+                    margin-left: -8px;
+                    margin-bottom: 5px;
+                }
+                .commentSection span[aria-hidden=true] {
+                    padding: 0 !important;
+                }
+                .actualComment {
+                    margin-bottom: 10px;
+                }
+			</style>
+
+            {% if current_user.id and has_ordered %}
+                <article>
+                    <section>
+                        <h3 >Add Rating</h3>
+                    </section>
+                    <x-star-rating value="" number="5" id="rating" disabled="false"></x-star-rating>
+
+                </article>
+            {% endif %}
+
+        <script src="../static/js/StarRating.js"></script>
+
+		</div>
+	</div>
+</div>
+
+<script>
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the image and insert it inside the modal - use its "alt" text as a caption
+var img = document.getElementById("myImg");
+var modalImg = document.getElementById("img01");
+var captionText = document.getElementById("caption");
+img.onclick = function(){
+  modal.style.display = "block";
+  modalImg.src = this.src;
+  captionText.innerHTML = this.alt;
+}
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() { 
+  modal.style.display = "none";
+}
+
+if (typeof rating !== 'undefined') {
+    rating.addEventListener('rate', () => {
+        $('#ratingValue').attr('value', rating.value);
+    });
+}
+</script>
+
+{% endblock %}

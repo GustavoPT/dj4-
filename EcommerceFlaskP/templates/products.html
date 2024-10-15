@@ -1,0 +1,42 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+    <h1 id="products">GeekText</h1>
+	<h2 id="products">For Geeks, By Geeks</h2>
+
+    <table id="example">
+        <tbody>
+            <tr>
+                <th>Cover</th>
+                <th>Name</th>
+				<th>Author</th>
+                <th>Description</th>
+                <th>Price</th>
+            </tr>
+            {% for product in products %}
+                <tr>
+                    <td><div class="text-center">
+					<a href="{{ url_for('product', id=product.id) }}">
+						<img id="myImg" class="img-thumbnail" src ="{{ product.image_path }}" alt="Product Image" style="width:100%;max-width:300px">
+					</a>	
+					</div></td>
+                    <td>{{ product.title }}</td>
+					<td>{{ product.authorName }}</td>
+                    <td>{{ product.description }}</td>
+                    <td>{{ product.price }}</td>
+                    {% if current_user.is_authenticated %}
+                        <td><button><a href="{{ url_for('product', id=product.id) }}">See</a></button>
+                            <button><a href="{{ url_for('add_to_cart', product_id=product.id) }}">Add to Cart</a></button>
+                        </td>
+                    {% else %}
+                        <td><button><a href="{{ url_for('product', id=product.id) }}">See</a></button>
+                            <button><a>Add to Cart</a></button>
+                        </td>
+                    {% endif %}                  
+                </tr>       
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+{% endblock %}
